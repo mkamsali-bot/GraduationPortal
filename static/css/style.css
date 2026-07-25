@@ -1,0 +1,16 @@
+body{
+    background:#f5f5f5;
+}
+
+.card{
+    border-radius:15px;
+}
+
+.navbar{
+    font-size:22px;
+    font-weight:bold;
+}
+
+footer{
+    font-size:14px;
+}

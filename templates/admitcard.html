@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Graduation Admit Card{% endblock %}
+{% block content %}
+<div class="container mt-4 mb-4">
+<div class="card shadow-lg border border-dark">
+
+<div class="card-header bg-primary text-white">
+<div class="row align-items-center">
+<div class="col-md-2 text-center">
+<div style="width:90px;height:90px;border:2px solid #fff;background:#fff;color:#000;
+display:flex;align-items:center;justify-content:center;margin:auto;"><b>LOGO</b></div>
+</div>
+
+<div class="col-md-8 text-center">
+<h2><b>GITAM (Deemed to be University)</b></h2>
+<h4>19<sup>th</sup> Graduation Ceremony – 2026</h4>
+<h3><b>ADMIT CARD</b></h3>
+</div>
+
+<div class="col-md-2 text-center">
+<div style="width:120px;height:150px;border:2px solid #fff;background:#fff;color:#000;
+display:flex;align-items:center;justify-content:center;margin:auto;"><b>PHOTO</b></div>
+</div>
+</div>
+</div>
+
+<div class="card-body">
+
+<h4 class="text-primary">Student Details</h4>
+
+<table class="table table-bordered">
+<tr><th width="30%">Registration Number</th><td>{{ student.RegNo }}</td></tr>
+<tr><th>Name</th><td>{{ student.Name }}</td></tr>
+<tr><th>Degree</th><td>{{ student.Degree }}</td></tr>
+<tr><th>Institute</th><td>{{ student.Institute }}</td></tr>
+<tr><th>Programme</th><td>{{ student.Program }}</td></tr>
+<tr><th>Branch</th><td>{{ student.Branch }}</td></tr>
+<tr><th>Ceremony Date</th><td>{{ student.CeremonyDate }}</td></tr>
+</table>
+
+<hr>
+
+<h4 class="text-primary">Seating Arrangement</h4>
+
+{% if student.Institute in ['GSB','GSS'] %}
+
+<table class="table table-bordered">
+<tr class="table-primary"><th colspan="2">Graduation Ceremony Venue</th></tr>
+<tr><th>Venue</th><td>Helipad Arena</td></tr>
+<tr><th>Row Number</th><td>{{ student.GradRow }}</td></tr>
+<tr><th>Seat Number</th><td>{{ student.GradSeat }}</td></tr>
+</table>
+
+<table class="table table-bordered">
+<tr class="table-success"><th colspan="2">Degree Certificate Distribution Venue</th></tr>
+<tr><th>Venue</th><td>Shivaji Auditorium</td></tr>
+<tr><th>Row Number</th><td>{{ student.CertRow }}</td></tr>
+<tr><th>Seat Number</th><td>{{ student.CertSeat }}</td></tr>
+</table>
+
+<div class="alert alert-info"><strong>Parent / Accompanying Guest Venue:</strong> Helipad Arena / Shivaji Auditorium</div>
+
+{% else %}
+
+<table class="table table-bordered">
+<tr class="table-primary"><th colspan="2">Graduation Ceremony & Degree Certificate Distribution</th></tr>
+<tr><th>Venue</th><td>Helipad Arena</td></tr>
+<tr><th>Row Number</th><td>{{ student.GradRow }}</td></tr>
+<tr><th>Seat Number</th><td>{{ student.GradSeat }}</td></tr>
+</table>
+
+<div class="alert alert-info"><strong>Parent / Accompanying Guest Venue:</strong> Helipad Arena</div>
+
+{% endif %}
+
+<hr>
+
+<h4 class="text-danger">Instructions</h4>
+
+<ol>
+<li>Carry printed/soft copy of the Admit Card for QR code scanning.</li>
+<li>Show this card at the entrance.</li>
+<li>Keep this Admit Card until the end of the Graduation Ceremony.</li>
+<li>This Admit Card is non-transferable.</li>
+<li>Please be seated by <strong>2:00 PM</strong>.</li>
+<li>Follow all instructions issued by University officials.</li>
+</ol>
+
+<hr>
+
+<div class="row align-items-end">
+
+<div class="col-md-3 text-center">
+<div style="width:150px;height:150px;border:2px solid #000;
+display:flex;align-items:center;justify-content:center;margin:auto;">
+<b>QR CODE</b>
+</div>
+</div>
+
+<div class="col-md-9 text-end">
+<br><br><br>
+<hr style="width:220px;margin-left:auto;">
+<strong>Controller of Examinations</strong>
+</div>
+
+</div>
+
+<hr>
+
+<p class="text-center text-muted">
+This Admit Card is computer generated and does not require a signature.
+</p>
+
+<div class="d-flex justify-content-between">
+<a href="/" class="btn btn-secondary">← Back</a>
+<button onclick="window.print()" class="btn btn-primary">🖨 Print Admit Card</button>
+</div>
+
+</div>
+</div>
+</div>
+
+{% endblock %}
